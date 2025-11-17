@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width,initial-scale=1" />
+	<title>Product Page — Review System Practice</title>
+	<link rel="stylesheet" href="index.css">
+</head>
+<body>
+	<main class="container">
+		<article class="product">
+			<header>
+				<h1 class="product-title">SuperGadget X100</h1>
+				<p class="product-sub">High-performance gadget for everyday tech lovers.</p>
+			</header>
+
+			<section class="product-info">
+				<h2>Product Details</h2>
+				<p>
+					The SuperGadget X100 comes with an advanced processor, long battery life,
+					and a crystal-clear display. Perfect for streaming, gaming, and productivity.
+				</p>
+			</section>
+
+			<!-- Reviews Section -->
+			<section id="reviews" class="reviews" aria-labelledby="reviews-heading">
+				<h2 id="reviews-heading">Customer Reviews</h2>
+
+				<div class="reviews-stats" aria-live="polite">
+					<div class="stat">
+						<strong id="totalReviews">0</strong>
+						<span>Total Reviews</span>
+					</div>
+					<div class="stat">
+						<strong id="avgRating">0.0</strong>
+						<span>Average Rating</span>
+					</div>
+					<div class="stat">
+						<strong id="recPercent">0%</strong>
+						<span>Recommend</span>
+					</div>
+					<div class="stat sort">
+						<label for="sortSelect">Sort:</label>
+						<select id="sortSelect" aria-label="Sort reviews">
+							<option value="newest">Newest first</option>
+							<option value="highest">Highest rated</option>
+						</select>
+					</div>
+				</div>
+
+				<div class="review-form-wrapper">
+					<h3>Write a Review</h3>
+					<form id="reviewForm" novalidate>
+						<div class="form-row">
+							<label for="name">Name <span class="required">*</span></label>
+							<input id="name" name="name" type="text" minlength="2" maxlength="30" required aria-required="true">
+							<div class="error" id="errName" aria-live="polite"></div>
+						</div>
+
+						<div class="form-row">
+							<label for="email">Email</label>
+							<input id="email" name="email" type="email" placeholder="you@example.com">
+							<div class="error" id="errEmail" aria-live="polite"></div>
+						</div>
+
+						<div class="form-row">
+							<label for="title">Review Title <span class="required">*</span></label>
+							<input id="title" name="title" type="text" minlength="5" maxlength="100" required>
+							<div class="error" id="errTitle" aria-live="polite"></div>
+						</div>
+
+						<div class="form-row">
+							<label for="description">Review Description <span class="required">*</span></label>
+							<textarea id="description" name="description" rows="5" minlength="20" maxlength="1000" required></textarea>
+							<div class="char-counter"><span id="descCount">0</span>/1000</div>
+							<div class="error" id="errDescription" aria-live="polite"></div>
+						</div>
+
+						<fieldset class="form-row rating" id="ratingField">
+							<legend>Product Rating <span class="required">*</span></legend>
+							<div class="stars" id="starRating" role="radiogroup" aria-labelledby="ratingField">
+								<input type="radio" name="rating" id="star5" value="5"><label for="star5" title="5 stars">★</label>
+								<input type="radio" name="rating" id="star4" value="4"><label for="star4" title="4 stars">★</label>
+								<input type="radio" name="rating" id="star3" value="3"><label for="star3" title="3 stars">★</label>
+								<input type="radio" name="rating" id="star2" value="2"><label for="star2" title="2 stars">★</label>
+								<input type="radio" name="rating" id="star1" value="1"><label for="star1" title="1 star">★</label>
+							</div>
+							<div class="error" id="errRating" aria-live="polite"></div>
+						</fieldset>
+
+						<fieldset class="form-row recommend">
+							<legend>Would you recommend this product?</legend>
+							<label><input type="radio" name="recommend" value="yes"> Yes</label>
+							<label><input type="radio" name="recommend" value="no"> No</label>
+						</fieldset>
+
+						<div class="form-row actions">
+							<button type="submit" id="submitBtn">Submit Review</button>
+						</div>
+					</form>
+				</div>
+
+				<div class="reviews-list" id="reviewsList" aria-live="polite">
+					<!-- Reviews will be rendered here -->
+				</div>
+			</section>
+		</article>
+	</main>
+
+	<script src="index.js"></script>
+</body>
+</html>
+

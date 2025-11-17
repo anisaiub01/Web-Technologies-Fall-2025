@@ -1,0 +1,149 @@
+/* --------------------------------------------------------------------------
+	 Variables
+	 ----------------------------------------------------------------------- */
+:root {
+	--accent: #0066cc;
+	--muted: #666666;
+	--bg: #f8f9fb;
+	--card: #ffffff;
+	--danger: #d9534f;
+	--shadow-1: rgba(0,0,0,0.04);
+	--radius: 6px;
+}
+
+/* --------------------------------------------------------------------------
+	 Reset & Base
+	 ----------------------------------------------------------------------- */
+* { box-sizing: border-box; }
+html,body { margin: 0; padding: 0; }
+body {
+	font-family: 'Segoe UI', Roboto, Arial, sans-serif;
+	background: var(--bg);
+	color: #222222;
+	-webkit-font-smoothing:antialiased;
+}
+
+/* Layout container */
+.container {
+	max-width: 960px;
+	margin: 24px auto;
+	padding: 16px;
+}
+
+/* Product card */
+.product {
+	background: var(--card);
+	padding: 20px;
+	border-radius: calc(var(--radius) + 2px);
+	box-shadow: 0 2px 8px var(--shadow-1);
+}
+.product-title { margin: 0; font-size: 1.6rem; }
+.product-sub { color: var(--muted); margin-top: 4px; }
+.product-info { margin: 12px 0 20px; }
+
+/* --------------------------------------------------------------------------
+	 Reviews: header stats and sorting
+	 ----------------------------------------------------------------------- */
+.reviews-stats {
+	display: flex;
+	gap: 16px;
+	flex-wrap: wrap;
+	align-items: center;
+	margin-bottom: 12px;
+}
+.reviews-stats .stat {
+	background: var(--card);
+	padding: 10px 12px;
+	border-radius: var(--radius);
+	box-shadow: 0 1px 3px var(--shadow-1);
+	min-width: 110px;
+	text-align: center;
+}
+.reviews-stats .stat strong { display:block; font-size: 1.1rem; }
+.reviews-stats .stat.sort { display: flex; align-items:center; gap: 8px; }
+
+/* --------------------------------------------------------------------------
+	 Form: wrapper, fields, buttons, helpers
+	 ----------------------------------------------------------------------- */
+.review-form-wrapper {
+	background: #f4f6f8;
+	padding: 14px;
+	border-radius: var(--radius);
+	margin-bottom: 16px;
+}
+h3 { margin-top: 0; }
+.form-row { display:flex; flex-direction: column; margin-bottom: 10px; }
+label { font-weight: 600; margin-bottom: 6px; }
+input[type='text'], input[type='email'], textarea, select {
+	padding: 8px;
+	border: 1px solid #d6d9de;
+	border-radius: 4px;
+	font-size: 0.95rem;
+}
+textarea { resize: vertical; }
+.required { color: var(--danger); margin-left: 4px; }
+.actions { display:flex; justify-content:flex-end; }
+button {
+	background: var(--accent);
+	color: #fff;
+	border: none;
+	padding: 10px 14px;
+	border-radius: 6px;
+	cursor: pointer;
+}
+button:disabled { opacity: 0.6; cursor: not-allowed; }
+.error { color: var(--danger); font-size: 0.9rem; margin-top: 6px; }
+.char-counter { font-size: 0.9rem; color: var(--muted); margin-top: 6px; }
+
+/* --------------------------------------------------------------------------
+	 Star rating: reverse order for CSS-only star highlighting
+	 ----------------------------------------------------------------------- */
+.stars {
+	display: flex;
+	flex-direction: row-reverse;
+	justify-content: flex-start;
+	gap: 6px;
+}
+.stars input { display: none; }
+.stars label {
+	font-size: 1.6rem;
+	color: #cfcfcf;
+	cursor: pointer;
+}
+/* checked ~ label targets labels after the checked input (row-reverse trick) */
+.stars input:checked ~ label,
+.stars label:hover,
+.stars label:hover ~ label { color: gold; }
+
+/* --------------------------------------------------------------------------
+	 Reviews list & review card
+	 ----------------------------------------------------------------------- */
+.reviews-list { margin-top: 12px; display:flex; flex-direction:column; gap:12px; }
+.review-card {
+	background: var(--card);
+	padding: 12px;
+	border-radius: calc(var(--radius) - 2px);
+	box-shadow: 0 1px 4px var(--shadow-1);
+}
+.review-meta { display:flex; justify-content:space-between; align-items:center; margin-bottom:6px; }
+.review-title { font-weight:700; margin:0; }
+.review-body { margin-top:8px; white-space: pre-wrap; }
+.review-rating { color: gold; font-size:1.05rem; }
+.helpful { display:inline-flex; align-items:center; gap:8px; margin-top:8px; }
+.helpful button {
+	background: #eee;
+	color: #222;
+	border: 1px solid #ddd;
+	padding: 6px 8px;
+	border-radius: 4px;
+}
+
+/* --------------------------------------------------------------------------
+	 Responsive tweaks
+	 ----------------------------------------------------------------------- */
+@media (max-width: 640px) {
+	.reviews-stats { flex-direction: column; align-items: stretch; }
+	.reviews-stats .stat { min-width: auto; }
+	.actions { justify-content: flex-start; }
+}
+
